@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://bly0fn30lt33l"]
+
+[ext_resource type="PackedScene" uid="uid://cvgnaaoyeas1d" path="res://scene/ground.tscn" id="1_b0vx8"]
+[ext_resource type="PackedScene" uid="uid://bx2am0na7707s" path="res://scene/obstacle.tscn" id="2_geh48"]
+[ext_resource type="PackedScene" uid="uid://bjof1obqkbrul" path="res://player/player.tscn" id="3_uim8a"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4rpqa"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_tjvs4"]
+sky_material = SubResource("ProceduralSkyMaterial_4rpqa")
+
+[sub_resource type="Environment" id="Environment_d18tb"]
+background_mode = 2
+sky = SubResource("Sky_tjvs4")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="world" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.16307)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d18tb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="ground" parent="." instance=ExtResource("1_b0vx8")]
+transform = Transform3D(50, 0, 0, 0, 0.2, 0, 0, 0, 50, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="obstacles" type="Node3D" parent="."]
+
+[node name="obstacle" parent="obstacles" instance=ExtResource("2_geh48")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.588532, 0)
+
+[node name="obstacle10" parent="obstacles" instance=ExtResource("2_geh48")]
+transform = Transform3D(18.6665, 0, 0, 0, 4.74927, 0, 0, 0, 0.339677, 8.02212, 0.58853, -4.84437)
+
+[node name="obstacle4" parent="obstacles" instance=ExtResource("2_geh48")]
+transform = Transform3D(2.57926, 0, 0, 0, 2.02564, 0, 0, 0, 1.82379, 0, 0.467755, 7.66868)
+
+[node name="obstacle6" parent="obstacles" instance=ExtResource("2_geh48")]
+transform = Transform3D(2.57926, 0, 0, 0, 2.02564, 0, 0, 0, 1.82379, -10.9677, 0.891603, -3.50547)
+
+[node name="obstacle7" parent="obstacles" instance=ExtResource("2_geh48")]
+transform = Transform3D(2.05299, 0, -1.10403, 0, 2.02564, 0, 1.56136, 0, 1.45167, -5.9531, 0.918865, -0.110735)
+
+[node name="obstacle9" parent="obstacles" instance=ExtResource("2_geh48")]
+transform = Transform3D(0.578953, 0, -1.7069, 0, 2.02564, 0, 0.44031, 0, 2.24436, -2.88441, 0.918865, -7.14637)
+
+[node name="obstacle8" parent="obstacles" instance=ExtResource("2_geh48")]
+transform = Transform3D(2.05299, 0, -1.10403, 0, 2.02564, 0, 1.56136, 0, 1.45167, -7.70458, 3.27927, -0.110735)
+
+[node name="obstacle5" parent="obstacles" instance=ExtResource("2_geh48")]
+transform = Transform3D(2.47245, -0.576905, 0, 0.712497, 1.88338, -0.44381, 0.178755, 0.472513, 1.76897, -8.47727, 0.439388, 9.93485)
+
+[node name="obstacle2" parent="obstacles" instance=ExtResource("2_geh48")]
+transform = Transform3D(1.38324, 0, 0, 0, 6.27599, 0, 0, 0, 2.33525, 2.37729, 0.588532, -1.21182)
+
+[node name="obstacle3" parent="obstacles" instance=ExtResource("2_geh48")]
+transform = Transform3D(3.93321, 0, -1.06195, 0, 11.0699, 0, 2.11268, 0, 1.97705, 4.10836, -0.412457, 3.76552)
+
+[node name="player" parent="." instance=ExtResource("3_uim8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.104429, -1.73409)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.62519, 0)
+visible = false
+light_energy = 4.979
+omni_range = 73.553

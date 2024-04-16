@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjof1obqkbrul"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_4m4bh"]
+[ext_resource type="PackedScene" uid="uid://b8orudib85t7n" path="res://weapon/pistol/pistol.tscn" id="2_nuel8"]
+[ext_resource type="PackedScene" uid="uid://c5mhujgki7ttq" path="res://scene/ui/hud/hud.tscn" id="2_od8pw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_h8dq4"]
+radius = 0.2
+height = 0.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v7q83"]
+radius = 0.2
+height = 0.8
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_4m4bh")
+
+[node name="hud" parent="." instance=ExtResource("2_od8pw")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("CapsuleMesh_h8dq4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("CapsuleShape3D_v7q83")
+
+[node name="CamRoot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.599637, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CamRoot"]
+
+[node name="WeaponsPlaceholder" type="Node3D" parent="CamRoot"]
+
+[node name="Pistol" parent="CamRoot/WeaponsPlaceholder" instance=ExtResource("2_nuel8")]
+transform = Transform3D(1, 0, 0, 0, 0.979925, -0.199368, 0, 0.199368, 0.979925, 0.18, -0.09, -0.26)
+
+[node name="Unarmed" type="Node3D" parent="CamRoot/WeaponsPlaceholder"]
+transform = Transform3D(1, 0, 0, 0, 0.979925, -0.199368, 0, 0.199368, 0.979925, 0.18, -0.09, -0.26)
